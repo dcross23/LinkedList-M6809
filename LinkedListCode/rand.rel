@@ -1,0 +1,27 @@
+XH2
+H 2 areas 3 global symbols 2 banks 1 modes
+M rand
+G 00 00 80 81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F
+B _CSEG base 0 size 0 map 0 flags 0
+B _DSEG base 0 size 0 map 0 flags 4 fsfx _DS
+S .__.ABS. Def0000
+A _CODE size 33 flags CD80 bank 0
+S srand Def0002
+S rand Def0006
+A _DATA size 0 flags CCC0 bank 1
+T 00 00 00 00
+R 00 00 00 00
+T 00 02
+R 00 00 00 00
+T 00 02 FD 00 00 39
+R 00 00 00 00 01 03 00 00
+T 00 06
+R 00 00 00 00
+T 00 06 FC 00 00 34 04 C6 74 3D 34 04 E6 61 86
+R 00 00 00 00 01 03 00 00
+T 00 13 74 3D AB E4 32 62 34 04 C6 0D 3D 34 04
+R 00 00 00 00
+T 00 20 E6 61 86 0D 3D AB E4 32 62 F3 00 00 C3
+R 00 00 00 00 01 0C 00 00
+T 00 2D 00 29 FD 00 00 39
+R 00 00 00 00 01 05 00 00
