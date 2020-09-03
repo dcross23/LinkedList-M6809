@@ -27,7 +27,7 @@ lista_vacia   : 	.asciz "La lista esta vacia\n\n\n"			 ;
 	.globl Imprimir_lista							 ;
 	.globl imprime_cadena							 ;
 	.globl ver_decimal							 ;
-										 ;
+	.globl rand								 ;
 ;================================================================================|
 
 

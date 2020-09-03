@@ -6,3 +6,4 @@ menu_principal.rel
 imprimir_lista.rel
 crear_lista.rel
 eliminar_nodo.rel
+insertar_nodo.rel

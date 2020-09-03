@@ -20,6 +20,7 @@ menu3:			.asciz "\n|      Sergio Fernandez Marcos         |"	 ;
 menu4: 			.asciz "\n| 1)Genera un lista de num aleatorios  |"	 ;
 menu5: 			.asciz "\n| 2)Ordena la lista                    |"	 ;
 menu6: 			.asciz "\n| 3)Borra un nodo de la lista          |"	 ;
+menu7: 			.asciz "\n| 4)Insertar un nodo en la lista       |"	 ;
 										 ;
 ;================================================================================|
 
@@ -65,6 +66,8 @@ Menu_principal:
 	ldx #menu5								 ;						
 	jsr imprime_cadena							 ;							
 	ldx #menu6								 ;								
+	jsr imprime_cadena							 ;
+	ldx #menu7								 ;								
 	jsr imprime_cadena							 ;								
 	ldx #menu0								 ;															
 	jsr imprime_cadena							 ;							

@@ -17,6 +17,8 @@ inicio_pila .equ 0x8000			;inicio de la pila U para la lista	 ;
 ;================================================================================|    
 numero_nodos: 	   .byte 0		;numero total de nodos de la lista    	 ;					
 temp:              .word 0		;variable auxiliar			 ;
+codigo_eliminar:   .byte 0 		;codigo devuelto por eliminar nodo	 ;
+semilla:           .word 0		;semilla para generar numeros aleatorios ;
 										 ;
 ;------------------------------  CADENAS  ---------------------------------------;									
 cadena_final: 		.asciz "\n\t    FIN DEL PROGRAMA"			 ;
@@ -39,6 +41,7 @@ linea: 			.asciz "\n|======================================|"	 ;
 	.globl Imprimir_lista							 ;
 	.globl Crear_lista							 ;
 	.globl Eliminar_nodo							 ;
+	.globl Insertar_nodo							 ;
 ;================================================================================|
 
 
@@ -55,20 +58,37 @@ programa:									 ;
 ;-------------------------- CREAR Y ORDENAR LISTA -------------------------------;	
 	jsr Crear_lista								 ;		
  	stb numero_nodos							 ;
+	sty semilla								 ;
 										 ;
 ;---------------------------- IMPRIMIR LA LISTA ---------------------------------;								
 imprimir_la_lista:								 ;
 	stx temp			; guardo la cabeza en una var temporal	 ;
 	jsr Imprimir_lista							 ;
-	cmpd #-1								 ;
-	lbeq Final_programa							 ;
 										 ;													
 ;------------------------------ ELIMINAR NODO -----------------------------------;	
 	ldx temp			;preparamos en X la cabeza y en B	 ;
 	ldb numero_nodos		;  el numero de nodos para llamar a la	 ;
 	jsr Eliminar_nodo		;  "funcion" eliminar nodo		 ;
-	stb numero_nodos							 ;
-	cmpa #-1								 ;
+										 ;
+	sta codigo_eliminar							 ;
+	stx temp		  	;guardo la posible nueva cabeza y el     ;
+	stb numero_nodos 		; nuevo numero de nodos tras eliminar 	 ;
+								 		 ;
+	jsr Imprimir_lista							 ;
+	cmpd #-1								 ;
+	lbeq Final_programa							 ;
+										 ;				
+;------------------------------ INSERTAR NODO -----------------------------------;
+	ldx temp			;Cargo en x la cabeza y en b el numero   ;
+	ldb numero_nodos		; de nodos (aunque no haría falta)       ;
+	lda codigo_eliminar							 ;
+	ldy semilla								 ;
+	jsr Insertar_nodo		; "funcion" insertar nodo		 ;	
+										 ;		
+	stx temp		  	;guardo la posible nueva cabeza y el     ;
+	stb numero_nodos 		; nuevo numero de nodos tras insertar 	 ;		
+										 ;
+	cmpa #-3								 ;
 	bne imprimir_la_lista							 ;
 ;================================================================================|
 

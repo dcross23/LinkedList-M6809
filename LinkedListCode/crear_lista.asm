@@ -52,6 +52,7 @@ error: 		  	.asciz "\n\tOpcion incorrecta\n"			 ;
 ;   Entrada: ninguna	  			                   ;
 ;   Salida: X -> puntero a la cabeza de la lista	   	   ;
 ;  	    B -> numero de nodos de la lista (0-255)		   ;
+;	    Y -> semilla utilizada				   ;
 ;   Registros afectados: U,D,X,Y,CC.                               ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -136,7 +137,7 @@ Crear_lista:
 										 ;								
 										 ;									
 	   ;si es menor, recorro la lista buscando su posicion			 ;						
-		leay ,x 		; y (actual)  =  x(cabeza)		 ;					
+	   leay ,x 			; y (actual)  =  x(cabeza)		 ;					
     buscar_posicion:							 	 ;					
 					;avanzo una posicion en la lista	 ;   						
 	  sty puntero_anterior 		;anterior = actual			 ;		
@@ -177,6 +178,7 @@ Crear_lista:
 
 acabar:
 	ldb numero_nodos
+	ldy semilla
 	rts
 
 

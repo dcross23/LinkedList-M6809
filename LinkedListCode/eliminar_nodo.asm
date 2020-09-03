@@ -48,6 +48,7 @@ error: 		  	.asciz "\n\tOpcion incorrecta\n"			 ;
 ;   Salida: A -> 0 si se ha eliminado el nodo			   ;
 ; 		-1 si no se quiere eliminar más nodos	   	   ;
 ;  	    B -> nuevo numero de nodos				   ;
+;  	    X -> nueva cabeza (si se modifica) o la vieja (si no)  ;
 ;   Registros afectados: D,X,Y,CC.                                 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -97,7 +98,8 @@ nodo_a_eliminar:								 ;
 Eliminar_primero:								 ;					
 	ldx temp			;cargo en X otra vez la cabeza (primero) ;					
 	leax 2,x								 ;						
-	ldx ,x				;primero = primero->sig			 ;							
+	ldx ,x				;primero = primero->sig			 ;
+	stx temp								 ;							
 										 ;							
 	ldb numero_nodos 							 ;						
 	decb				;Decremento en 1 el numero de nodos	 ;				
@@ -137,7 +139,7 @@ Eliminar_medio_o_ultimo:							 ;
 	ldb numero_nodos 	 						 ;			
 	decb				;Decremento en 1 el numero de nodos	 ;				
 	stb numero_nodos							 ;	
-										 ;	
+	
 	lda #0									 ;
 	bra acabar								 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +148,8 @@ acabar_programa:
 	lda #-1			
 
 acabar:
+	ldx temp
+	ldb numero_nodos
 	rts
 
 
