@@ -14,13 +14,12 @@
 										 ; 				
 ;--------------------------------  MENU  ----------------------------------------;	
 menu0: 			.asciz "\n|======================================|"	 ;
-menu1:			.asciz "\n|    PRACTICA FINAL COMPUTADORES II    |"	 ;
-menu2:			.asciz "\n|         David Cruz Garcia            |"	 ;
-menu3:			.asciz "\n|      Sergio Fernandez Marcos         |"	 ;
-menu4: 			.asciz "\n| 1)Genera un lista de num aleatorios  |"	 ;
-menu5: 			.asciz "\n| 2)Ordena la lista                    |"	 ;
-menu6: 			.asciz "\n| 3)Borra un nodo de la lista          |"	 ;
-menu7: 			.asciz "\n| 4)Insertar un nodo en la lista       |"	 ;
+menu1:			.asciz "\n|    		    LINKED LIST    		 	 |"	 ;
+menu2:			.asciz "\n|          David Cruz Garcia           |"	 ;
+menu3: 			.asciz "\n| 1)Genera un lista de num aleatorios  |"	 ;
+menu4: 			.asciz "\n| 2)Ordena la lista                    |"	 ;
+menu5: 			.asciz "\n| 3)Borra un nodo de la lista          |"	 ;
+menu6: 			.asciz "\n| 4)Insertar un nodo en la lista       |"	 ;
 										 ;
 ;================================================================================|
 
@@ -55,19 +54,17 @@ Menu_principal:
 	jsr imprime_cadena							 ;						
 										 ;			
 	ldx #menu2								 ;								
-	jsr imprime_cadena							 ;						
-	ldx #menu3								 ;				
-	jsr imprime_cadena							 ;				
+	jsr imprime_cadena							 ;		
 	ldx #menu0								 ;					
 	jsr imprime_cadena							 ;					
 										 ;			
-	ldx #menu4								 ;						
+	ldx #menu3								 ;						
 	jsr imprime_cadena							 ;					
-	ldx #menu5								 ;						
+	ldx #menu4								 ;						
 	jsr imprime_cadena							 ;							
-	ldx #menu6								 ;								
+	ldx #menu5								 ;								
 	jsr imprime_cadena							 ;
-	ldx #menu7								 ;								
+	ldx #menu6								 ;								
 	jsr imprime_cadena							 ;								
 	ldx #menu0								 ;															
 	jsr imprime_cadena							 ;							
